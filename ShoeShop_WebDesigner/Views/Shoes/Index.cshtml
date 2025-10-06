@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ShoeShop.Models.Shoe>
+@{
+    ViewData["Title"] = "Shoes";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Shoe Inventory</h2>
+    <a asp-controller="Shoes" asp-action="Create" class="btn btn-primary">Add Shoe</a>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th style="width:160px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shoe in Model)
+        {
+            <tr>
+                <td>@shoe.Name</td>
+                <td>@shoe.Brand</td>
+                <td>@shoe.Price.ToString("C")</td>
+                <td>
+                    @if (shoe.Stock <= 5)
+                    {
+                        <span class="badge bg-danger">Low (@shoe.Stock)</span>
+                    }
+                    else
+                    {
+                        <span>@shoe.Stock</span>
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Shoes" asp-action="Edit" asp-route-id="@shoe.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a asp-controller="Shoes" asp-action="Delete" asp-route-id="@shoe.Id" class="btn btn-sm btn-outline-danger ms-1">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

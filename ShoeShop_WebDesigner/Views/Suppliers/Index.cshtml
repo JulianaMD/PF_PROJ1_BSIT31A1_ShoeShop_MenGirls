@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ShoeShop_WebDesigner.Models.Supplier>
+
+@{
+    ViewData["Title"] = "Suppliers";
+}
+
+<h2>Suppliers</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Supplier</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var supplier in Model)
+        {
+            <tr>
+                <td>@supplier.Name</td>
+                <td>@supplier.Contact</td>
+                <td>@supplier.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@supplier.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@supplier.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

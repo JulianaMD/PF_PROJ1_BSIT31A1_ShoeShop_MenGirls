@@ -1,0 +1,12 @@
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.low-stock {
+    color: #b33;
+    font-weight: 600;
+}
